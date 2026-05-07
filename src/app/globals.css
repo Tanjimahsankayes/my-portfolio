@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-primary-blue: #3b82f6;
+  --color-primary-red: #ef4444;
+  --color-deep-bg: #050a18;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  
+  --animate-orbit: orbit 20s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  @keyframes orbit {
+    from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --background: #050a18;
+  --foreground: #ffffff;
 }
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+.gradient-text {
+  @apply bg-linear-to-r from-blue-400 via-purple-500 to-red-500 bg-clip-text text-transparent;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+}
+
+.glow-shadow {
+  box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.border-subtle {
+  @apply border border-white/10;
+}
+
+.gradient-border-card {
+  @apply relative p-[1px] rounded-3xl overflow-hidden;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(239, 68, 68, 0.5));
+}
+
+.gradient-border-content {
+  @apply bg-deep-bg rounded-[23px] h-full w-full;
+}
+
+.title-underline {
+  @apply relative inline-block;
+}
+
+.title-underline::after {
+  content: '';
+  @apply absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-blue-500 rounded-full;
+}
+
