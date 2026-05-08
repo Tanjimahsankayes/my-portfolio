@@ -9,23 +9,25 @@ const Projects = () => {
 
   const projectList = [
     {
-      title: "MERN Todo App",
-      year: "2025",
-      description: "A fully functional Todo application with authentication, CRUD operations, and a clean, responsive UI.",
+      title: "NextGen Edu",
+      year: "2026",
+      description:
+        "NextGen Edu is a modern AI-powered learning platform where students can explore courses, track progress, and enjoy a smooth educational experience through an interactive and user-friendly interface.",
       tags: ["React", "Node.js", "Express.js", "MongoDB"],
       image: "/images/project1.png",
-      github: "#",
-      live: "#"
+      github: "https://github.com/Tanjimahsankayes/nextgen-edu",
+      live: "https://nextgen-edu-ruddy.vercel.app/",
     },
     {
-      title: "E-Commerce Demo",
-      year: "2025",
-      description: "A demo e-commerce platform featuring product listing, cart system, and checkout flow.",
+      title: "Keen Keeper",
+      year: "2026",
+      description:
+        "Keen Keeper is a modern productivity and task management platform designed to help users organize daily work, track progress, and manage tasks efficiently with a clean and user-friendly experience.",
       tags: ["React", "Node.js", "Express.js", "Redux"],
       image: "/images/project2.png",
-      github: "#",
-      live: "#"
-    }
+      github: "https://github.com/Tanjimahsankayes/keen-keeper",
+      live: "https://keen-keeper-beta.vercel.app/",
+    },
   ];
 
   useGSAP(() => {
