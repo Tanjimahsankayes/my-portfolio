@@ -1,7 +1,10 @@
 "use client";
-import React, { useRef } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Educations = () => {
   const containerRef = useRef(null);
@@ -10,47 +13,78 @@ const Educations = () => {
     {
       degree: "Diploma in Computer Engineering",
       institution: "Barguna Government Polytechnic institute",
-      timeline: "2022 - PRESENT | EXPECTED GRADUATION: 2026"
-    },
-    {
-      degree: "H.S.C",
-      institution: "Comilla Victoria Government College, Comilla",
-      timeline: "YEAR: 2024"
+      timeline: "2022 - PRESENT | EXPECTED GRADUATION: 2026",
     },
     {
       degree: "S.S.C",
-      institution: "Nabinagar Government Pilot High School",
-      timeline: "YEAR: 2022"
-    }
+      institution: "Amdia Krishak Sramik High School, Dhaka",
+      timeline: "YEAR: 2022",
+    },
+    {
+      degree: "J.S.C",
+      institution: "Amdia Krishak Sramik High School, Dhaka",
+      timeline: "YEAR: 2019",
+    },
   ];
 
-  useGSAP(() => {
-    gsap.from(".edu-card", {
-      x: -50,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.3,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".edu-stack",
-        start: "top 85%"
-      }
-    });
+  useGSAP(
+    () => {
+      // Header animation - comes in first
+      gsap.from(".edu-header", {
+        y: -30,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".edu-header",
+          start: "top 85%",
+          once: true,
+        },
+      });
 
-    gsap.from(".edu-header", {
-      scale: 0.9,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".edu-header",
-        start: "top 90%"
-      }
-    });
-  }, { scope: containerRef });
+      // Education cards - staggered entrance from bottom
+      gsap.from(".edu-card", {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".edu-stack",
+          start: "top 80%",
+          once: true,
+        },
+      });
+
+      // Add hover effects for cards
+      const cards = document.querySelectorAll(".edu-card");
+      cards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card, {
+            scale: 1.02,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        });
+
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        });
+      });
+    },
+    { scope: containerRef },
+  );
 
   return (
-    <section ref={containerRef} id="education" className="py-24 px-6 lg:px-24 bg-deep-bg text-white">
+    <section
+      ref={containerRef}
+      id="education"
+      className="py-24 px-6 lg:px-24 bg-deep-bg text-white"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="edu-header text-center mb-16">
@@ -62,9 +96,9 @@ const Educations = () => {
         {/* Education Cards Stack */}
         <div className="edu-stack flex flex-col gap-8 max-w-4xl mx-auto">
           {educationData.map((edu, index) => (
-            <div 
-              key={index} 
-              className="edu-card p-10 glass-card border-white/5 hover:bg-white/10 transition-all hover:scale-[1.02] cursor-default group"
+            <div
+              key={index}
+              className="edu-card p-10 glass-card border-white/5 cursor-default group"
             >
               <div className="space-y-4">
                 <h3 className="text-2xl lg:text-3xl font-bold tracking-tight group-hover:text-blue-400 transition-colors">
