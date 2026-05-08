@@ -108,7 +108,7 @@ const Banner = () => {
           <span className="gradient-text">Tanjim Ahsan Kayes</span>
         </h1>
         <p className="banner-text max-w-lg text-lg text-white/60 leading-relaxed mx-auto lg:mx-0">
-          I build scalable full-stack applications using React, Node.js, Express and MongoDB. 
+          I build scalable Mern-stack applications using React, Node.js, Express and MongoDB. 
           I love clean code and fast UIs.
         </p>
 

@@ -34,19 +34,19 @@ const Projects = () => {
       description:
         "A clean and efficient GitHub Issue Tracker application built to manage, track, and organize project issues with a modern and user-friendly interface. Designed to improve workflow, collaboration, and productivity for developers.",
       tags: ["Next.js", "MongoDB", "Stripe", "JWT"],
-      image: "/images/project3.png",
+      image: "/images/github-issu-tracker.png",
       github: "https://github.com/Tanjimahsankayes/Github-Issue-Tracker",
       live: "https://tanjimahsankayes.github.io/Github-Issue-Tracker/",
     },
     {
-      title: "DigiTools Platform",
+      title: "Countries",
       year: "2025",
       description:
         "A powerful digital tools platform designed to simplify everyday tasks and improve productivity through modern web technologies. Built with a clean UI, responsive design, and user-friendly experience to deliver efficient and practical solutions.",
       tags: ["React", "Socket.io", "Express.js", "MongoDB"],
-      image: "/images/project4.png",
-      github: "https://github.com/Tanjimahsankayes/digitools-platform",
-      live: "https://social-connect-app.vercel.app/",
+      image: "/images/countries.png",
+      github: "https://github.com/Tanjimahsankayes/countries",
+      live: "https://miscreant-army.surge.sh/",
     },
     {
       title: "TechWave",
@@ -54,7 +54,7 @@ const Projects = () => {
       description:
         "A modern tech-focused web application built with a clean UI and responsive design. TechWave delivers a smooth user experience while showcasing modern frontend development practices and interactive web features.",
       tags: ["React", "API Integration", "Chart.js", "Tailwind"],
-      image: "/images/project5.png",
+      image: "/images/techwave.png",
       github: "https://github.com/Tanjimahsankayes/TechWave",
       live: "https://tanjimahsankayes.github.io/TechWave/",
     },
@@ -64,7 +64,7 @@ const Projects = () => {
       description:
         "A modern and responsive Job Tracker web application designed to help users manage and track their job applications efficiently. Users can organize applications, monitor progress, and stay productive with a clean and user-friendly interface.",
       tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
-      image: "/images/project6.png",
+      image: "/images/job-tracker.png",
       github: "https://github.com/Tanjimahsankayes/Job-Tracker",
       live: "https://tanjimahsankayes.github.io/Job-Tracker/",
     },
