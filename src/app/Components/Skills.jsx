@@ -3,6 +3,11 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaCcStripe, FaCss3Alt, FaHtml5, FaNode } from "react-icons/fa";
+import { SiBetterauth, SiDaisyui, SiExpress, SiHeroui, SiMongodb, SiTailwindcss } from "react-icons/si";
+import { BsJavascript } from "react-icons/bs";
+import { IoLogoReact } from "react-icons/io5";
+import { RiNextjsLine } from "react-icons/ri";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,48 +20,44 @@ const Skills = () => {
       skills: [
         {
           name: "HTML",
-          icon: (
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          ),
+          icon: <FaHtml5 size={25} />,
         },
         {
           name: "CSS",
-          icon: (
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          ),
+          icon: <FaCss3Alt size={25} />,
         },
         {
           name: "Tailwind CSS",
-          icon: (
-            <path d="M12.001 6.002c-2.012 0-3.353 1.006-4.023 3.018 1.005-1.005 2.178-1.34 3.519-.998.765.19 1.31.751 1.916 1.373.987 1.012 2.13 2.185 4.611 2.185 2.012 0 3.353-1.006 4.023-3.018-1.005 1.005-2.178 1.34-3.519.998-.765-.19-1.31-.751-1.916-1.373-.987-1.012-2.13-2.185-4.611-2.185zM6.001 12.002c-2.012 0-3.353 1.006-4.023 3.018 1.005-1.005 2.178-1.34 3.519-.998.765.19 1.31.751 1.916 1.373.987 1.012 2.13 2.185 4.611 2.185 2.012 0 3.353-1.006 4.023-3.018-1.005 1.005-2.178 1.34-3.519.998-.765-.19-1.31-.751-1.916-1.373-.987-1.012-2.13-2.185-4.611-2.185z" />
-          ),
+          icon: <SiTailwindcss size={25} />,
         },
         {
           name: "DaisyUI",
-          icon: (
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          ),
+          icon: <SiDaisyui size={25} />,
         },
         {
           name: "Hero UI",
-          icon: (
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          ),
+          icon: <SiHeroui size={25} />,
         },
         {
           name: "JavaScript",
-          icon: (
-            <path d="M3 3h18v18H3V3zm11.536 14.18c.288-.173.447-.41.447-.745 0-.34-.23-.532-.564-.7-.294-.15-.717-.268-1.043-.37l-.422-.134c-.813-.263-1.638-.532-1.638-1.503 0-.768.582-1.344 1.543-1.344.627 0 1.082.16 1.363.4l-.505.864c-.2-.14-.493-.243-.787-.243-.454 0-.742.23-.742.544 0 .326.243.467.653.6l.467.153c.928.294 1.747.614 1.747 1.632 0 .973-.774 1.536-1.843 1.536-.78 0-1.33-.243-1.632-.518l.493-.89c.275.224.634.403 1.024.403.544 0 .787-.23.787-.505zM9.544 13.568h1.165v4.525c0 .947-.435 1.485-1.46 1.485-.384 0-.76-.083-1.018-.211l.243-.915c.205.083.422.14.614.14.422 0 .454-.256.454-.53v-4.494z" />
-          ),
+          icon: <BsJavascript size={25} />,
         },
         {
           name: "React",
+          icon: <IoLogoReact size={25} />,
+        },
+        {
+          name: "Next.js",
+          icon: <RiNextjsLine size={25} />,
+        },
+        {
+          name: "DOM & BOM",
           icon: (
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
           ),
         },
         {
-          name: "Next.js",
+          name: "Problem Solving",
           icon: (
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
           ),
@@ -68,20 +69,42 @@ const Skills = () => {
       skills: [
         {
           name: "Node.js",
-          icon: (
-            <path d="M12 2L4.5 6.33v8.67L12 19.33l7.5-4.33V6.33L12 2zm-1 12.5h-1.5v-5h1.5v5zm4.5 0h-1.5v-5h1.5v5z" />
-          ),
+          icon: <FaNode size={25} />,
         },
         {
           name: "Express.js",
+          icon: <SiExpress size={25} />,
+        },
+        {
+          name: "MongoDB",
+          icon: <SiMongodb size={25} />,
+        },
+        {
+          name: "Stripe",
+          icon: <FaCcStripe size={25} />,
+        },
+        {
+          name: "SSLCommerz",
           icon: (
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
           ),
         },
         {
-          name: "MongoDB",
+          name: "REST API / API Integration",
           icon: (
-            <path d="M12 2c0 0-4 4-4 10s4 10 4 10 4-4 4-10-4-10-4-10zm0 18c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          ),
+        },
+        {
+          name: "Modular Pattern",
+          icon: (
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          ),
+        },
+        {
+          name: "Mongose",
+          icon: (
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
           ),
         },
       ],
@@ -90,13 +113,29 @@ const Skills = () => {
       title: "AUTHENTICATION",
       skills: [
         {
-          name: "NextAuth",
+          name: "BetterAuth",
+          icon: <SiBetterauth size={25} />,
+        },
+        {
+          name: "JWT",
           icon: (
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
           ),
         },
         {
-          name: "JWT",
+          name: "AI Integration",
+          icon: (
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          ),
+        },
+        {
+          name: "Role-Based Access Control (RBAC)",
+          icon: (
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          ),
+        },
+        {
+          name: "Authentication & Authorization",
           icon: (
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
           ),

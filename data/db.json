@@ -1,0 +1,254 @@
+{
+  "projects": [
+    {
+  "id": 7,
+  "title": "Tutor Booking System",
+  "year": 2026,
+  "description": "A modern online tutoring platform that connects students with qualified tutors, allowing users to find tutors, book learning sessions, and manage their personalized learning experience.",
+
+  "details": {
+    "overview": "Tutor Booking System is a modern online tutoring platform designed to connect students with qualified tutors for personalized learning experiences. Students can browse tutors based on their subjects and requirements, schedule tutoring sessions, and manage their learning journey through a user-friendly platform. The system also provides flexible scheduling, tutor verification, progress tracking, communication features, and secure payment options.",
+
+    "features": [
+      "Student and tutor platform",
+      "Tutor discovery and browsing",
+      "Tutor profile and subject information",
+      "Tutor booking and session scheduling",
+      "Flexible learning schedules",
+      "Verified tutor system",
+      "Tutor ratings and reviews",
+      "Real-time messaging",
+      "Video calling support",
+      "Learning progress tracking",
+      "Secure payment system",
+      "One-on-one tutoring",
+      "Group tutoring sessions",
+      "Exam preparation services",
+      "Online tutoring",
+      "Homework assistance",
+      "Subject-specific tutoring",
+      "Responsive and user-friendly interface"
+    ],
+
+    "technologies": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "BetterAuth",
+      "Tailwind CSS",
+      "Hero UI",
+      "Stripe",
+      "REST API"
+    ]
+  },
+
+  "tags": [
+    "Next.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB"
+  ],
+
+  "image": "/images/tutorbooking.png",
+
+  "github": "YOUR_GITHUB_LINK",
+
+  "live": "https://tutor-booking-system-three.vercel.app/"
+    },
+    {
+      "id": 1,
+      "title": "NextGen Edu",
+      "year": 2026,
+      "description": "NextGen Edu is a modern AI-powered learning platform where students can explore courses, track their learning progress, and enjoy a smooth and interactive educational experience.",
+      "details": {
+        "overview": "NextGen Edu is an AI-powered learning platform designed to make online education more interactive, accessible, and engaging. The platform provides students with a clean learning environment where they can explore courses, manage their learning activities, and track their progress.",
+        "features": [
+          "Student dashboard",
+          "Course exploration and management",
+          "Learning progress tracking",
+          "AI-powered learning features",
+          "Responsive and user-friendly interface",
+          "Modern educational platform design"
+        ],
+        "technologies": [
+          "React",
+          "Node.js",
+          "Express.js",
+          "MongoDB"
+        ]
+      },
+      "tags": [
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB"
+      ],
+      "image": "/images/project1.png",
+      "github": "https://github.com/Tanjimahsankayes/nextgen-edu",
+      "live": "https://nextgen-edu-ruddy.vercel.app/"
+    },
+    {
+      "id": 2,
+      "title": "Keen Keeper",
+      "year": 2026,
+      "description": "Keen Keeper is a modern productivity and task management platform designed to help users organize daily work, track progress, and manage tasks efficiently.",
+      "details": {
+        "overview": "Keen Keeper is a productivity-focused task management platform built to help users organize their daily activities and maintain better control over their work. It provides a clean and intuitive interface for creating, managing, and tracking tasks.",
+        "features": [
+          "Task creation and management",
+          "Task progress tracking",
+          "Organized productivity dashboard",
+          "Efficient task workflow",
+          "Responsive user interface",
+          "Clean and modern design"
+        ],
+        "technologies": [
+          "React",
+          "Node.js",
+          "Express.js",
+          "Redux"
+        ]
+      },
+      "tags": [
+        "React",
+        "Node.js",
+        "Express.js",
+        "Redux"
+      ],
+      "image": "/images/project2.png",
+      "github": "https://github.com/Tanjimahsankayes/keen-keeper",
+      "live": "https://keen-keeper-beta.vercel.app/"
+    },
+    {
+      "id": 3,
+      "title": "GitHub Issue Tracker",
+      "year": 2026,
+      "description": "A clean and efficient GitHub Issue Tracker application built to manage, track, and organize project issues with a modern and user-friendly interface.",
+      "details": {
+        "overview": "GitHub Issue Tracker is a web application designed to simplify the process of managing and tracking software project issues. It helps developers organize issues, monitor their status, and maintain a more efficient development workflow.",
+        "features": [
+          "Issue creation and management",
+          "Issue tracking and organization",
+          "Project workflow management",
+          "Secure authentication",
+          "Payment integration",
+          "Developer-friendly interface",
+          "Responsive design"
+        ],
+        "technologies": [
+          "Next.js",
+          "MongoDB",
+          "Stripe",
+          "JWT"
+        ]
+      },
+      "tags": [
+        "Next.js",
+        "MongoDB",
+        "Stripe",
+        "JWT"
+      ],
+      "image": "/images/github-issu-tracker.png",
+      "github": "https://github.com/Tanjimahsankayes/Github-Issue-Tracker",
+      "live": "https://tanjimahsankayes.github.io/Github-Issue-Tracker/"
+    },
+    {
+      "id": 4,
+      "title": "Countries",
+      "year": 2025,
+      "description": "A modern country information web application designed to provide useful information about countries through a clean, responsive, and user-friendly interface.",
+      "details": {
+        "overview": "Countries is a web application that allows users to explore information about different countries in an interactive and visually appealing way. The project focuses on API integration, responsive design, and creating a smooth browsing experience.",
+        "features": [
+          "Country information browsing",
+          "Dynamic API integration",
+          "Country search functionality",
+          "Interactive user interface",
+          "Responsive design",
+          "Modern and clean layout"
+        ],
+        "technologies": [
+          "React",
+          "Socket.io",
+          "Express.js",
+          "MongoDB"
+        ]
+      },
+      "tags": [
+        "React",
+        "Socket.io",
+        "Express.js",
+        "MongoDB"
+      ],
+      "image": "/images/countries.png",
+      "github": "https://github.com/Tanjimahsankayes/countries",
+      "live": "https://miscreant-army.surge.sh/"
+    },
+    {
+      "id": 5,
+      "title": "TechWave",
+      "year": 2025,
+      "description": "A modern tech-focused web application built with a clean UI and responsive design, showcasing modern frontend development practices and interactive web features.",
+      "details": {
+        "overview": "TechWave is a modern technology-focused web application created to demonstrate responsive frontend development and interactive web experiences. The project combines a clean visual design with API integration and data visualization.",
+        "features": [
+          "Modern technology-focused interface",
+          "API data integration",
+          "Interactive charts and data visualization",
+          "Responsive layout",
+          "Clean and modern UI",
+          "Interactive web components"
+        ],
+        "technologies": [
+          "React",
+          "API Integration",
+          "Chart.js",
+          "Tailwind CSS"
+        ]
+      },
+      "tags": [
+        "React",
+        "API Integration",
+        "Chart.js",
+        "Tailwind"
+      ],
+      "image": "/images/techwave.png",
+      "github": "https://github.com/Tanjimahsankayes/TechWave",
+      "live": "https://tanjimahsankayes.github.io/TechWave/"
+    },
+    {
+      "id": 6,
+      "title": "Job Tracker",
+      "year": 2025,
+      "description": "A modern and responsive Job Tracker web application designed to help users manage and track their job applications efficiently.",
+      "details": {
+        "overview": "Job Tracker is a modern application management platform designed to help job seekers organize and monitor their job applications. Users can keep track of application progress, manage important information, and maintain an organized job-search workflow.",
+        "features": [
+          "Job application management",
+          "Application status tracking",
+          "Organized job dashboard",
+          "Application progress monitoring",
+          "Responsive design",
+          "Modern and user-friendly interface"
+        ],
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "Prisma",
+          "PostgreSQL"
+        ]
+      },
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL"
+      ],
+      "image": "/images/job-tracker.png",
+      "github": "https://github.com/Tanjimahsankayes/Job-Tracker",
+      "live": "https://tanjimahsankayes.github.io/Job-Tracker/"
+    }
+  ]
+}

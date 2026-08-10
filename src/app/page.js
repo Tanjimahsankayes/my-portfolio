@@ -1,4 +1,3 @@
-
 import Banner from "./Components/Banner";
 import About from "./Components/About";
 import Educations from "./Components/Educations";
@@ -11,7 +10,6 @@ import Footer from "./Components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-deep-bg">
-
       <Banner />
       <About />
       <Educations />
@@ -24,11 +22,3 @@ export default function Home() {
     </main>
   );
 }
-
-
-
-
-
-
-
-

@@ -94,10 +94,19 @@ const Banner = () => {
   };
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 lg:px-24 pt-32 pb-20 overflow-hidden bg-deep-bg">
+    <section
+      ref={containerRef}
+      className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 lg:px-24 pt-32 pb-20 overflow-hidden bg-deep-bg"
+    >
       {/* Background Glows */}
-      <div ref={glow1Ref} className="absolute top-1/4 -left-10 w-72 h-72 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div ref={glow2Ref} className="absolute bottom-1/4 -right-10 w-72 h-72 bg-red-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div
+        ref={glow1Ref}
+        className="absolute top-1/4 -left-10 w-72 h-72 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"
+      />
+      <div
+        ref={glow2Ref}
+        className="absolute bottom-1/4 -right-10 w-72 h-72 bg-red-600/10 rounded-full blur-[120px] pointer-events-none"
+      />
 
       {/* Left Content */}
       <div className="z-10 flex-1 text-center lg:text-left space-y-6">
@@ -108,12 +117,12 @@ const Banner = () => {
           <span className="gradient-text">Tanjim Ahsan Kayes</span>
         </h1>
         <p className="banner-text max-w-lg text-lg text-white/60 leading-relaxed mx-auto lg:mx-0">
-          I build scalable Mern-stack applications using React, Node.js, Express and MongoDB. 
-          I love clean code and fast UIs.
+          I build scalable Mern-stack applications using React, Node.js, Express
+          and MongoDB. I love clean code and fast UIs.
         </p>
 
         <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-          <a 
+          <a
             href="#projects"
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
@@ -121,14 +130,16 @@ const Banner = () => {
           >
             View Projects
           </a>
-          <a 
+          <a
             href="#contact"
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
             className="banner-btn px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all flex items-center gap-2 group cursor-pointer text-center"
           >
             Let's Collaborate
-            <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
+            <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+              ↗
+            </span>
           </a>
         </div>
       </div>
@@ -137,13 +148,18 @@ const Banner = () => {
       <div className="relative flex-1 flex items-center justify-center mt-20 lg:mt-0">
         {/* Glow behind image */}
         <div className="absolute w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl" />
-        
+
         {/* Profile Image Container */}
-        <div ref={imageRef} className="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full p-2 bg-linear-to-br from-blue-500/20 to-red-500/20 border border-white/10 overflow-hidden glow-shadow">
+        <div
+          ref={imageRef}
+          className="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full p-2 bg-linear-to-br from-blue-500/20 to-red-500/20 border border-white/10 overflow-hidden glow-shadow"
+        >
           <Image
             src="/images/about-profile.png"
             alt="Tanjim Ahsan Kayes"
             fill
+            priority  
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover rounded-full p-4 grayscale hover:grayscale-0 transition-all duration-500"
           />
         </div>
