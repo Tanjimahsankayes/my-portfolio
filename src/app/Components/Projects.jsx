@@ -6,7 +6,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import ProjectDetailsModal from "./ProjectDetailsModal";
-import { TbListDetails } from "react-icons/tb";
 import { MdReviews } from "react-icons/md";
 import { VscLiveShare } from "react-icons/vsc";
 
@@ -168,95 +167,107 @@ const Projects = () => {
             {projectList.map((project) => (
               <div
                 key={project.id}
-                className="project-card gradient-border-card group"
+                className="project-card gradient-border-card group flex flex-col justify-between"
               >
-                <div className="gradient-border-content p-6 flex flex-col h-full">
-                  {/* Project Image */}
-                  <div className="project-image-container relative w-full aspect-video rounded-2xl overflow-hidden mb-6 border border-white/10">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-500"
-                    />
+                <div className="gradient-border-content p-6 flex flex-col h-full justify-between">
+                  {/* Top Content: Image & Info */}
+                  <div>
+                    {/* Project Image */}
+                    <div className="project-image-container relative w-full aspect-video rounded-2xl overflow-hidden mb-6 border border-white/10">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-500"
+                      />
 
-                    {/* Hover Overlay */}
-                    <div
-                      className="
-                      absolute
-                      inset-0
-                      bg-linear-to-t
-                      from-black/60
-                      to-transparent
-                      opacity-0
-                      group-hover:opacity-100
-                      transition-opacity
-                      duration-500
-                      flex
-                      items-end
-                      p-6
-                    "
-                    >
-                      <button
-                        type="button"
-                        onClick={() => handleDetails(project)}
+                      {/* Hover Overlay */}
+                      <div
                         className="
-                          text-white
-                          font-bold
-                          text-base
-                          translate-y-4
-                          group-hover:translate-y-0
-                          transition-transform
+                          absolute
+                          inset-0
+                          bg-linear-to-t
+                          from-black/60
+                          to-transparent
+                          opacity-0
+                          group-hover:opacity-100
+                          transition-opacity
                           duration-500
-                          cursor-pointer
+                          flex
+                          items-end
+                          p-6
                         "
                       >
-                        View Project Details
-                      </button>
+                        <button
+                          type="button"
+                          onClick={() => handleDetails(project)}
+                          className="
+                            text-white
+                            font-bold
+                            text-base
+                            translate-y-4
+                            group-hover:translate-y-0
+                            transition-transform
+                            duration-500
+                            cursor-pointer
+                          "
+                        >
+                          View Project Details
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Header Details */}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="text-2xl font-bold group-hover:text-blue-400 transition-colors line-clamp-1">
+                          {project.title}
+                        </h3>
+                        {project.year && (
+                          <span className="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 shrink-0 font-medium">
+                            {project.year}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Description */}
+                      {project.description && (
+                        <p className="text-white/60 leading-relaxed text-sm line-clamp-2">
+                          {project.description}
+                        </p>
+                      )}
+
+                      {/* Tags */}
+                      {project.tags && project.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          {project.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="
+                                px-3
+                                py-1
+                                bg-white/5
+                                border
+                                border-white/10
+                                rounded-full
+                                text-xs
+                                font-medium
+                                text-blue-400
+                                group-hover:border-blue-500/30
+                                transition-colors
+                              "
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="flex-1 space-y-4">
-                    <h3 className="text-2xl font-bold group-hover:text-blue-400 transition-colors">
-                      {project.title}{" "}
-                      <span className="text-white/40 font-medium">
-                        ({project.year})
-                      </span>
-                    </h3>
-
-                    {/* <p className="text-white/60 leading-relaxed text-sm">
-                      {project.description}
-                    </p> */}
-
-                    {/* Tags */}
-                    {/* <div className="flex flex-wrap gap-2 pt-2">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="
-                            px-3
-                            py-1
-                            bg-white/5
-                            border
-                            border-white/10
-                            rounded-full
-                            text-xs
-                            font-medium
-                            text-blue-400
-                            group-hover:border-blue-500/30
-                            transition-colors
-                          "
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div> */}
-                  </div>
-
-                  {/* Buttons */}
-                  <div className="flex flex-col gap-3 mt-8">
-                    {/* Details */}
+                  {/* Bottom Content: Action Buttons */}
+                  <div className="flex flex-col gap-3 pt-6 mt-6 border-t border-white/10">
+                    {/* Details Button */}
                     <button
                       type="button"
                       onClick={() => handleDetails(project)}
@@ -286,7 +297,7 @@ const Projects = () => {
                       </span>
                     </button>
 
-                    {/* GitHub + Live */}
+                    {/* GitHub + Live Buttons */}
                     <div className="grid grid-cols-2 gap-3">
                       <a
                         href={project.github}
