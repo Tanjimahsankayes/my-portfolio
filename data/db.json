@@ -1,6 +1,66 @@
 {
   "projects": [
     {
+  "id": 8,
+  "title": "Ticketora",
+  "year": 2026,
+  "description": "Ticketora is a modern online ticket booking platform that allows users to discover and book travel tickets, manage their bookings, and securely complete payments through an easy-to-use platform.",
+
+  "details": {
+    "overview": "Ticketora is a full-stack online ticket booking platform designed to simplify the process of discovering, booking, and managing travel tickets. Users can browse available tickets, view travel details, submit booking requests, and complete secure payments after booking approval. The platform includes separate user, vendor, and admin workflows for managing tickets, bookings, approvals, and advertisements.",
+
+    "features": [
+      "Online ticket booking platform",
+      "Bus, train, and flight ticket support",
+      "Ticket search and browsing",
+      "Ticket details and travel information",
+      "User authentication",
+      "Google authentication",
+      "User booking management",
+      "Vendor ticket management",
+      "Booking request and approval system",
+      "Booking acceptance and rejection",
+      "Automatic ticket quantity management",
+      "Admin dashboard",
+      "Ticket creation and management",
+      "Ticket approval system",
+      "Featured and advertised tickets",
+      "Booking status tracking",
+      "Secure online payment",
+      "Stripe payment integration",
+      "Stripe webhook integration",
+      "Responsive and user-friendly interface",
+      "Role-based user workflows"
+    ],
+
+    "technologies": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Better Auth",
+      "Tailwind CSS",
+      "Stripe",
+      "REST API",
+      "Vercel"
+    ]
+  },
+
+  "tags": [
+    "Next.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB"
+  ],
+
+  "image": "/images/ticketora.png",
+
+  "github": "https://github.com/Tanjimahsankayes/ticketora-client",
+
+  "live": "https://ticketora-client.vercel.app/"
+},
+    {
   "id": 7,
   "title": "Tutor Booking System",
   "year": 2026,
@@ -53,7 +113,7 @@
 
   "image": "/images/tutorbooking.png",
 
-  "github": "YOUR_GITHUB_LINK",
+  "github": "https://github.com/Tanjimahsankayes/tour-booking-system",
 
   "live": "https://tutor-booking-system-three.vercel.app/"
     },
