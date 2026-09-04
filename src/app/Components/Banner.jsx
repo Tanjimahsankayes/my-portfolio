@@ -1,8 +1,11 @@
 "use client";
-import React, { useRef } from 'react';
-import Image from 'next/image';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import React, { useRef } from "react";
+import Image from "next/image";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Banner = () => {
   const containerRef = useRef(null);
@@ -10,64 +13,131 @@ const Banner = () => {
   const imageRef = useRef(null);
   const glow1Ref = useRef(null);
   const glow2Ref = useRef(null);
+  const buttonsRef = useRef(null);
 
-  useGSAP(() => {
-    const tl = gsap.timeline();
+  // useGSAP(() => {
+  //   const tl = gsap.timeline();
 
-    // Initial load animations
-    tl.from(".banner-text", {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: "power4.out"
-    })
-    .from(imageRef.current, {
-      scale: 0.8,
-      opacity: 0,
-      duration: 1.5,
-      ease: "elastic.out(1, 0.5)"
-    }, "-=0.5")
-    .from(".banner-btn", {
-      scale: 0.9,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.1,
-      ease: "back.out(1.7)"
-    }, "-=0.8");
+  //   // Initial load animations
+  //   tl.from(".banner-text", {
+  //     y: 100,
+  //     opacity: 0,
+  //     duration: 1,
+  //     stagger: 0.2,
+  //     ease: "power4.out"
+  //   })
+  //   .from(imageRef.current, {
+  //     scale: 0.8,
+  //     opacity: 0,
+  //     duration: 1.5,
+  //     ease: "elastic.out(1, 0.5)"
+  //   }, "-=0.5")
+  //   .from(".banner-btn", {
+  //     scale: 0.9,
+  //     opacity: 0,
+  //     duration: 0.5,
+  //     stagger: 0.1,
+  //     ease: "back.out(1.7)"
+  //   }, "-=0.8");
 
-    // Scroll parallax for glows
-    gsap.to(glow1Ref.current, {
-      y: 200,
-      x: 100,
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: true
-      }
-    });
+  //   // Scroll parallax for glows
+  //   gsap.to(glow1Ref.current, {
+  //     y: 200,
+  //     x: 100,
+  //     scrollTrigger: {
+  //       trigger: containerRef.current,
+  //       start: "top top",
+  //       end: "bottom top",
+  //       scrub: true
+  //     }
+  //   });
 
-    gsap.to(glow2Ref.current, {
-      y: -200,
-      x: -100,
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: true
-      }
-    });
+  //   gsap.to(glow2Ref.current, {
+  //     y: -200,
+  //     x: -100,
+  //     scrollTrigger: {
+  //       trigger: containerRef.current,
+  //       start: "top top",
+  //       end: "bottom top",
+  //       scrub: true
+  //     }
+  //   });
 
-    // Subtle floating animation for image
-    gsap.to(imageRef.current, {
-      y: -20,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
-  }, { scope: containerRef });
+  //   // Subtle floating animation for image
+  //   gsap.to(imageRef.current, {
+  //     y: -20,
+  //     duration: 3,
+  //     repeat: -1,
+  //     yoyo: true,
+  //     ease: "sine.inOut"
+  //   });
+  // }, { scope: containerRef });
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline();
+
+      tl.from(".banner-text", {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power4.out",
+      })
+        .from(
+          imageRef.current,
+          {
+            scale: 0.8,
+            opacity: 0,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.5)",
+          },
+          "-=0.5",
+        )
+        // .from(
+        //   ".banner-btn",
+        //   {
+        //     scale: 0.9,
+        //     opacity: 0,
+        //     duration: 0.5,
+        //     stagger: 0.1,
+        //     ease: "back.out(1.7)",
+        //   },
+        //   "-=0.8",
+        // );
+
+      gsap.to(glow1Ref.current, {
+        y: 200,
+        x: 100,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(glow2Ref.current, {
+        y: -200,
+        x: -100,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(imageRef.current, {
+        y: -20,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    },
+    { scope: containerRef },
+  );
 
   // Magnetic Button Effect (inline for now)
   const onMouseMove = (e) => {
@@ -75,12 +145,12 @@ const Banner = () => {
     const rect = btn.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    
+
     gsap.to(btn, {
       x: x * 0.3,
       y: y * 0.3,
       duration: 0.3,
-      ease: "power2.out"
+      ease: "power2.out",
     });
   };
 
@@ -89,7 +159,7 @@ const Banner = () => {
       x: 0,
       y: 0,
       duration: 0.5,
-      ease: "elastic.out(1, 0.3)"
+      ease: "elastic.out(1, 0.3)",
     });
   };
 
@@ -121,7 +191,10 @@ const Banner = () => {
           and MongoDB. I love clean code and fast UIs.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+        <div
+          ref={buttonsRef}
+          className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4"
+        >
           <a
             href="#projects"
             onMouseMove={onMouseMove}
@@ -131,6 +204,20 @@ const Banner = () => {
             View Projects
           </a>
           <a
+            href=""
+            onMouseMove={onMouseMove}
+            onMouseLeave={onMouseLeave}
+            onClick={() => {
+              const link = document.createElement("a");
+              link.href = "/file/Resume.pdf";
+              link.download = "Tanjim_Ahsan_Kayes_Resume.pdf";
+              link.click();
+            }}
+            className="banner-btn px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all flex items-center gap-2 group cursor-pointer text-center"
+          >
+            Download Resume
+          </a>
+          {/* <a
             href="#contact"
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
@@ -140,7 +227,7 @@ const Banner = () => {
             <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
               ↗
             </span>
-          </a>
+          </a> */}
         </div>
       </div>
 
@@ -158,7 +245,7 @@ const Banner = () => {
             src="/images/about-profile.png"
             alt="Tanjim Ahsan Kayes"
             fill
-            priority  
+            priority
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover rounded-full p-4 grayscale hover:grayscale-0 transition-all duration-500"
           />
