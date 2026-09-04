@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar";
 import ScrollProvider from "./Components/ScrollProvider";
 import ScrollProgress from "./Components/ScrollProgress";
 import MouseFollower from "./Components/MouseFollower";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,8 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main className="flex-1">
             {children}
+
+            <ToastContainer />
           </main>
         </ScrollProvider>
       </body>

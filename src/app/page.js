@@ -18,7 +18,6 @@ export default function Home() {
       <FAQ />
       <Contact />
       <Footer />
-      {/* Additional sections can be added here */}
     </main>
   );
 }
