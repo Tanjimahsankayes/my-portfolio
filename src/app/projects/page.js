@@ -1,16 +1,16 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-import ProjectDetailsModal from "./ProjectDetailsModal";
+import ProjectDetailsModal from "../Components/ProjectDetailsModal";
 import { MdReviews } from "react-icons/md";
 import { VscLiveShare } from "react-icons/vsc";
 
-const Projects = () => {
+export default function AllProjectsPage() {
   const containerRef = useRef(null);
 
   const [projectList, setProjectList] = useState([]);
@@ -20,7 +20,7 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Fetch Projects
+  // Fetch all projects (no limit)
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -35,12 +35,10 @@ const Projects = () => {
 
         const data = await response.json();
 
-        // Sort by id descending and take the 3 most recent
-        const recent = [...data]
-          .sort((a, b) => b.id - a.id)
-          .slice(0, 3);
+        // Sort by id descending (newest first)
+        const sorted = [...data].sort((a, b) => b.id - a.id);
 
-        setProjectList(recent);
+        setProjectList(sorted);
       } catch (error) {
         console.error("Project fetch error:", error);
 
@@ -118,13 +116,23 @@ const Projects = () => {
       className="py-24 px-6 lg:px-24 bg-deep-bg text-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
+        {/* Back Link */}
+        <div className="mb-8">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors text-sm font-medium"
+          >
+            ← Back to Portfolio
+          </Link>
+        </div>
+
         {/* Section Header */}
         <div className="projects-header text-center mb-16 space-y-4">
-          <h2 className="text-5xl lg:text-6xl font-bold">Recent Projects</h2>
+          <h2 className="text-5xl lg:text-6xl font-bold">All Projects</h2>
 
           <p className="max-w-2xl mx-auto text-white/60 text-lg">
-            Here are some of the real-world projects I've built using modern web
-            technologies.
+            A complete collection of all the real-world projects I've built
+            using modern web technologies.
           </p>
         </div>
 
@@ -369,33 +377,6 @@ const Projects = () => {
             ))}
           </div>
         )}
-
-        {/* View All Projects Button */}
-        {!loading && !error && (
-          <div className="text-center mt-12">
-            <Link
-              href="/projects"
-              className="
-                inline-flex
-                items-center
-                gap-2
-                px-8
-                py-4
-                bg-white/10
-                border
-                border-white/20
-                text-white
-                font-bold
-                rounded-2xl
-                hover:bg-white/20
-                transition-colors
-                text-base
-              "
-            >
-              View All Projects
-            </Link>
-          </div>
-        )}
       </div>
 
       {/* Project Details Modal */}
@@ -406,6 +387,4 @@ const Projects = () => {
       />
     </section>
   );
-};
-
-export default Projects;
+}
