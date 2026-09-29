@@ -66,6 +66,7 @@ const skillCategories = [
 ];
 
 const Skills = () => {
+  "use no memo";
   const containerRef = useRef(null);
 
   useGSAP(

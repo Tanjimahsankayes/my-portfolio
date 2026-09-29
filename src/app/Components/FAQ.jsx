@@ -2,13 +2,16 @@
 import React, { useState, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FAQItem = ({ question, answer, index }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="faq-item border-b border-white/10 py-6">
-      <button 
+      <button
         className="w-full flex items-center justify-between text-left group cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -31,29 +34,29 @@ const FAQItem = ({ question, answer, index }) => {
 const FAQ = () => {
   const containerRef = useRef(null);
   const faqData = [
-    { 
-      question: "Who are you, and what do you do?", 
-      answer: "I'm Tanjim Ahsan Kayes, a full-stack developer specialized in building scalable web applications using the MERN stack and Next.js." 
+    {
+      question: "Who are you, and what do you do?",
+      answer: "I'm Tanjim Ahsan Kayes, a full-stack developer specialized in building scalable web applications using the MERN stack and Next.js."
     },
-    { 
-      question: "What services do you provide?", 
-      answer: "I offer custom web development, UI/UX design, API integration, and performance optimization services." 
+    {
+      question: "What services do you provide?",
+      answer: "I offer custom web development, UI/UX design, API integration, and performance optimization services."
     },
-    { 
-      question: "What technologies do you work with?", 
-      answer: "My core stack includes React, Node.js, Express, MongoDB, Tailwind CSS, and Next.js." 
+    {
+      question: "What technologies do you work with?",
+      answer: "My core stack includes React, Node.js, Express, MongoDB, Tailwind CSS, and Next.js."
     },
-    { 
-      question: "How do you approach a new project?", 
-      answer: "I start with thorough requirement analysis, followed by wireframing, development with clean code practices, and rigorous testing." 
+    {
+      question: "How do you approach a new project?",
+      answer: "I start with thorough requirement analysis, followed by wireframing, development with clean code practices, and rigorous testing."
     },
-    { 
-      question: "Can you redesign an existing website?", 
-      answer: "Yes, I can modernize your existing site with improved performance, accessibility, and a contemporary aesthetic." 
+    {
+      question: "Can you redesign an existing website?",
+      answer: "Yes, I can modernize your existing site with improved performance, accessibility, and a contemporary aesthetic."
     },
-    { 
-      question: "How can I collaborate with you on a project?", 
-      answer: "You can reach out through the 'Let's Connect' button or email me directly to discuss your project requirements." 
+    {
+      question: "How can I collaborate with you on a project?",
+      answer: "You can reach out through the 'Let's Connect' button or email me directly to discuss your project requirements."
     },
   ];
 
@@ -65,7 +68,8 @@ const FAQ = () => {
       ease: "power3.out",
       scrollTrigger: {
         trigger: ".faq-header",
-        start: "top 85%"
+        start: "top 85%",
+        once: true,
       }
     });
 
@@ -77,7 +81,8 @@ const FAQ = () => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: ".faq-grid",
-        start: "top 80%"
+        start: "top 80%",
+        once: true,
       }
     });
   }, { scope: containerRef });

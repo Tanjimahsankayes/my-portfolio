@@ -2,9 +2,13 @@
 import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { toast } from "react-toastify";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Contact = () => {
+  "use no memo";
   const containerRef = useRef(null);
   const [formStatus, setFormStatus] = useState("idle");
 
@@ -51,6 +55,7 @@ const Contact = () => {
         scrollTrigger: {
           trigger: ".contact-header",
           start: "top 85%",
+          once: true,
         },
       });
 
@@ -64,6 +69,7 @@ const Contact = () => {
         scrollTrigger: {
           trigger: ".contact-grid",
           start: "top 80%",
+          once: true,
         },
       });
 
@@ -76,6 +82,7 @@ const Contact = () => {
         scrollTrigger: {
           trigger: ".contact-grid",
           start: "top 80%",
+          once: true,
         },
       });
     },

@@ -33,6 +33,7 @@ const educationData = [
 
 const Educations = () => {
   // Pure JavaScript Ref
+  "use no memo";
   const containerRef = useRef(null);
 
   // GSAP Hook Setup

@@ -14,6 +14,7 @@ import { HiArrowLeft, HiMiniEllipsisVertical } from "react-icons/hi2";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AllProjectsPage() {
+  "use no memo";
   const containerRef = useRef(null);
 
   const [projectList, setProjectList] = useState([]);
@@ -63,8 +64,6 @@ export default function AllProjectsPage() {
     () => {
       if (loading || error || projectList.length === 0) return;
 
-      ScrollTrigger.refresh();
-
       // Section header reveal
       gsap.from(".projects-header > *", {
         y: 30,
@@ -75,6 +74,7 @@ export default function AllProjectsPage() {
         scrollTrigger: {
           trigger: ".projects-header",
           start: "top 85%",
+          once: true,
         },
       });
 
@@ -88,6 +88,7 @@ export default function AllProjectsPage() {
         scrollTrigger: {
           trigger: ".projects-grid",
           start: "top 80%",
+          once: true,
         },
       });
     },

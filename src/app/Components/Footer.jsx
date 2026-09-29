@@ -3,9 +3,13 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Footer = () => {
+  "use no memo";
   const containerRef = useRef(null);
 
   const socialIcons = [
@@ -42,6 +46,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: ".footer-cta",
           start: "top 90%",
+          once: true,
         },
       });
 
@@ -55,6 +60,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: ".footer-content",
           start: "top 85%",
+          once: true,
         },
       });
     },
@@ -117,9 +123,7 @@ const Footer = () => {
                   className="w-12 h-12 flex items-center justify-center rounded-2xl glass-card border-white/10 text-white hover:bg-white/10 transition-all duration-300"
                   aria-label={social.name}
                 >
-                  <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
-                    {social.icon}
-                  </svg>
+                  {social.icon}
                 </a>
               ))}
             </div>

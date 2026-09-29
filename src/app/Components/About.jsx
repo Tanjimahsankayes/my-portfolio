@@ -9,6 +9,7 @@ import { FiArrowUpRight, FiCode, FiLayout, FiZap } from "react-icons/fi";
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  "use no memo";
   const containerRef = useRef(null);
 
   const socialIcons = [

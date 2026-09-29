@@ -14,6 +14,7 @@ import { HiArrowRight, HiMiniEllipsisVertical } from "react-icons/hi2";
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
+  "use no memo";
   const containerRef = useRef(null);
 
   const [projectList, setProjectList] = useState([]);
@@ -73,6 +74,7 @@ const Projects = () => {
         scrollTrigger: {
           trigger: ".projects-header",
           start: "top 85%",
+          once: true,
         },
       });
 
@@ -86,6 +88,7 @@ const Projects = () => {
         scrollTrigger: {
           trigger: ".projects-grid",
           start: "top 80%",
+          once: true,
         },
       });
     },

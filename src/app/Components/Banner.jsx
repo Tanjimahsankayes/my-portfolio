@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Banner = () => {
+  "use no memo";
   const containerRef = useRef(null);
   const textRef = useRef(null);
   const imageRef = useRef(null);
