@@ -1,19 +1,19 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-import ProjectDetailsModal from "./ProjectDetailsModal";
+import ProjectDetailsModal from "../Components/ProjectDetailsModal";
 import { VscGithub, VscGlobe } from "react-icons/vsc";
-import { HiArrowRight, HiMiniEllipsisVertical } from "react-icons/hi2";
+import { HiArrowLeft, HiMiniEllipsisVertical } from "react-icons/hi2";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Projects = () => {
+export default function AllProjectsPage() {
   const containerRef = useRef(null);
 
   const [projectList, setProjectList] = useState([]);
@@ -23,7 +23,7 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Fetch Projects
+  // Fetch all projects
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -38,10 +38,10 @@ const Projects = () => {
 
         const data = await response.json();
 
-        // Sort by id descending and take the 3 most recent
-        const recent = [...data].sort((a, b) => b.id - a.id).slice(0, 3);
+        // Sort by id descending (newest first)
+        const sorted = [...data].sort((a, b) => b.id - a.id);
 
-        setProjectList(recent);
+        setProjectList(sorted);
       } catch (err) {
         console.error("Project fetch error:", err);
         setError("Failed to load projects.");
@@ -61,9 +61,11 @@ const Projects = () => {
 
   useGSAP(
     () => {
-      if (loading || error) return;
+      if (loading || error || projectList.length === 0) return;
 
-      // Section header animation
+      ScrollTrigger.refresh();
+
+      // Section header reveal
       gsap.from(".projects-header > *", {
         y: 30,
         opacity: 0,
@@ -76,7 +78,7 @@ const Projects = () => {
         },
       });
 
-      // Project cards animation
+      // Project cards reveal
       gsap.from(".project-card", {
         y: 50,
         opacity: 0,
@@ -91,7 +93,7 @@ const Projects = () => {
     },
     {
       scope: containerRef,
-      dependencies: [projectList, loading, error],
+      dependencies: [loading, error, projectList],
     },
   );
 
@@ -99,28 +101,38 @@ const Projects = () => {
     <section
       ref={containerRef}
       id="projects"
-      className="py-24 px-6 lg:px-20 bg-[#0c121e] text-white relative overflow-hidden font-sans"
+      className="py-24 px-6 lg:px-20 bg-[#0c121e] text-white relative overflow-hidden font-sans min-h-screen"
     >
       {/* Background Subtle Mesh Grid & Radial Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-600/10 blur-[160px] pointer-events-none rounded-full" />
 
       <div className="max-w-7xl mx-auto relative z-10">
+        {/* Back Link */}
+        <div className="mb-10">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium"
+          >
+            <HiArrowLeft size={16} /> Back to Home
+          </Link>
+        </div>
+
         {/* Section Header */}
         <div className="projects-header text-left mb-16 space-y-3 border-l-4 border-blue-500 pl-6">
           <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
-            Featured Works
+            All Projects
           </h2>
           <p className="max-w-2xl text-slate-400 text-base lg:text-lg">
-            A collection of modern, responsive projects built with passion and
-            precision
+            A complete collection of modern, responsive projects built with
+            passion and precision.
           </p>
         </div>
 
         {/* Loading Skeleton */}
         {loading && (
           <div className="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
+            {[1, 2, 3, 4, 5, 6].map((item) => (
               <div
                 key={item}
                 className="rounded-2xl border border-blue-500/20 bg-[#111927] p-5 animate-pulse"
@@ -149,11 +161,12 @@ const Projects = () => {
           <div className="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projectList.map((project) => (
               <div
-                key={project.id}
+                key={project.id || project._id}
                 className="project-card group bg-[#111927] border border-blue-500/20 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)]"
               >
-                {/* Top Image Showcase with Blur & Reveal Effect */}
+                {/* Top Content Showcase */}
                 <div>
+                  {/* Top Image Showcase with Blur & Reveal Effect */}
                   <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-slate-700/50 bg-[#090d16]">
                     <Image
                       src={project.image}
@@ -219,19 +232,6 @@ const Projects = () => {
             ))}
           </div>
         )}
-
-        {/* View All Projects Action */}
-        {!loading && !error && (
-          <div className="text-center mt-16">
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-blue-600 to-rose-600 hover:from-blue-500 hover:to-rose-500 text-white font-bold text-sm rounded-xl transition-all duration-300 shadow-lg shadow-blue-900/30 hover:scale-105"
-            >
-              View All Projects
-              <HiArrowRight size={16} />
-            </Link>
-          </div>
-        )}
       </div>
 
       {/* Project Details Modal */}
@@ -242,6 +242,4 @@ const Projects = () => {
       />
     </section>
   );
-};
-
-export default Projects;
+}
