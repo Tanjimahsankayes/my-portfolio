@@ -76,3 +76,24 @@ body {
   @apply absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-blue-500 rounded-full;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
