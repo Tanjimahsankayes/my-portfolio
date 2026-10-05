@@ -64,36 +64,46 @@ export default function AllProjectsPage() {
     () => {
       if (loading || error || projectList.length === 0) return;
 
-      // Ensure ScrollTrigger updates after dynamic items render
-      ScrollTrigger.refresh();
+      // DOM রেন্ডার হওয়া সম্পন্ন হওয়ার জন্য রিকোয়েস্ট এনিমেশন ফ্রেম ব্যবহার করা হয়েছে
+      const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
 
-      // Section header reveal
-      gsap.from(".projects-header > *", {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".projects-header",
-          start: "top 85%",
-          once: true,
-        },
-      });
+        // Section header reveal
+        gsap.from(".projects-header > *", {
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".projects-header",
+            start: "top 85%",
+            once: true,
+          },
+        });
 
-      // Project cards reveal
-      gsap.from(".project-card", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".projects-grid",
-          start: "top 85%",
+        // Project cards reveal using batch for dynamic grid items
+        ScrollTrigger.batch(".project-card", {
+          start: "top 90%",
           once: true,
-        },
-      });
+          onEnter: (batch) => {
+            gsap.fromTo(
+              batch,
+              { y: 40, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: "power3.out",
+                clearProps: "transform,opacity", // এনিমেশন শেষে যেন কোনো কার্ড হাইড হয়ে না থাকে
+              },
+            );
+          },
+        });
+      }, 100);
+
+      return () => clearTimeout(timer);
     },
     {
       scope: containerRef,
