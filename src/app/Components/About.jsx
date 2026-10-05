@@ -55,32 +55,50 @@ const About = () => {
 
   useGSAP(
     () => {
-      // Header Animation
-      gsap.from(".about-header", {
-        y: -20,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".about-header",
-          start: "top 85%",
-          once: true,
-        },
-      });
+      // safe scoped selectors
+      const header = containerRef.current?.querySelector(".about-header");
+      const bentoItems =
+        containerRef.current?.querySelectorAll(".about-bento-item");
 
-      // Bento Grid Entrance
-      gsap.from(".about-bento-item", {
-        y: 40,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".about-grid",
-          start: "top 80%",
-          once: true,
-        },
-      });
+      if (header) {
+        gsap.fromTo(
+          header,
+          { y: -20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: header,
+              start: "top 90%", // Trigger slightly earlier for safety
+              once: true,
+            },
+          },
+        );
+      }
+
+      if (bentoItems && bentoItems.length > 0) {
+        gsap.fromTo(
+          bentoItems,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".about-grid",
+              start: "top 85%", // Safe offset
+              once: true,
+            },
+          },
+        );
+      }
+
+      // ScrollTrigger refresh to ensure proper positions on initial render
+      ScrollTrigger.refresh();
     },
     { scope: containerRef },
   );
