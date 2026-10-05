@@ -41,31 +41,32 @@ const ProjectDetailsModal = ({ project, isOpen, onOpenChange }) => {
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-6 animate-[fadeIn_0.2s_ease-in-out]"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-6 transition-all duration-300"
     >
-      {/* Backdrop */}
+      {/* Backdrop with Blur */}
       <div
-        className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity"
+        className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300 animate-fadeIn"
         onClick={close}
       />
 
-      {/* Modal Container */}
+      {/* Modal Container with About Section Background Theme */}
       <div
         className="
           relative z-10
           w-full max-w-2xl max-h-[85vh]
           flex flex-col
-          bg-[#0b1220]/95 backdrop-blur-xl
+          bg-deep-bg/95 backdrop-blur-2xl
           border border-white/10
           rounded-2xl md:rounded-3xl
-          shadow-2xl shadow-black/50
+          shadow-2xl shadow-black/80
           overflow-hidden
-          animate-[slideIn_0.25s_cubic-bezier(0.16,1,0.3,1)]
+          transition-all duration-300
+          animate-scaleUp
         "
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-white/10 px-6 py-4 md:py-5 shrink-0 bg-[#0b1220]/80">
+        <div className="flex items-center justify-between border-b border-white/10 px-6 py-4 md:py-5 shrink-0 bg-white/[0.02]">
           <div>
             <h2
               id="modal-title"
@@ -101,7 +102,7 @@ const ProjectDetailsModal = ({ project, isOpen, onOpenChange }) => {
         {/* Body */}
         <div className="overflow-y-auto flex-1 px-6 py-6 space-y-6 [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,0.2)_transparent]">
           {project.image && (
-            <div className="relative w-full aspect-video rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+            <div className="relative w-full aspect-video rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-black/40">
               <Image
                 src={project.image}
                 alt={project.title || "Project preview"}
@@ -166,7 +167,7 @@ const ProjectDetailsModal = ({ project, isOpen, onOpenChange }) => {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-white/10 px-6 py-4 flex flex-wrap items-center justify-end gap-3 shrink-0 bg-[#0b1220]/80">
+        <div className="border-t border-white/10 px-6 py-4 flex flex-wrap items-center justify-end gap-3 shrink-0 bg-white/[0.02]">
           <button
             type="button"
             onClick={close}

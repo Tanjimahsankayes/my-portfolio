@@ -62,35 +62,56 @@ const Projects = () => {
 
   useGSAP(
     () => {
-      if (loading || error) return;
+      // Header Animation with Safe Selection & fromTo
+      const headerElements = containerRef.current?.querySelectorAll(
+        ".projects-header > *",
+      );
 
-      // Section header animation
-      gsap.from(".projects-header > *", {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".projects-header",
-          start: "top 85%",
-          once: true,
-        },
-      });
+      if (headerElements && headerElements.length > 0) {
+        gsap.fromTo(
+          headerElements,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".projects-header",
+              start: "top 85%",
+              once: true,
+            },
+          },
+        );
+      }
 
-      // Project cards animation
-      gsap.from(".project-card", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".projects-grid",
-          start: "top 80%",
-          once: true,
-        },
-      });
+      // Project Cards Animation - Only runs when projectList is populated
+      if (!loading && !error && projectList.length > 0) {
+        const cards = containerRef.current?.querySelectorAll(".project-card");
+
+        if (cards && cards.length > 0) {
+          gsap.fromTo(
+            cards,
+            { y: 50, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.9,
+              stagger: 0.2,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ".projects-grid",
+                start: "top 85%",
+                once: true,
+              },
+            },
+          );
+        }
+      }
+
+      // Refresh ScrollTrigger positions after content renders
+      ScrollTrigger.refresh();
     },
     {
       scope: containerRef,
@@ -102,7 +123,7 @@ const Projects = () => {
     <section
       ref={containerRef}
       id="projects"
-      className="py-24 px-6 lg:px-20 bg-[#0c121e] text-white relative overflow-hidden font-sans"
+      className="py-24 px-6 lg:px-20 bg-deep-bg text-white relative overflow-hidden font-sans"
     >
       {/* Background Subtle Mesh Grid & Radial Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
@@ -126,7 +147,7 @@ const Projects = () => {
             {[1, 2, 3].map((item) => (
               <div
                 key={item}
-                className="rounded-2xl border border-blue-500/20 bg-[#111927] p-5 animate-pulse"
+                className="rounded-2xl border border-blue-500/20 bg-white/[0.02] p-5 animate-pulse"
               >
                 <div className="aspect-[16/10] rounded-xl bg-slate-800/60 mb-5" />
                 <div className="h-6 bg-slate-800/60 rounded w-2/3 mx-auto mb-4" />
@@ -153,11 +174,11 @@ const Projects = () => {
             {projectList.map((project) => (
               <div
                 key={project.id}
-                className="project-card group bg-[#111927] border border-blue-500/20 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)]"
+                className="project-card group bg-white/[0.02] backdrop-blur-xl border border-white/5 hover:border-blue-500/40 rounded-2xl p-4 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)]"
               >
                 {/* Top Image Showcase with Blur & Reveal Effect */}
                 <div>
-                  <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-slate-700/50 bg-[#090d16]">
+                  <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 bg-black/40">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -186,7 +207,7 @@ const Projects = () => {
                   <button
                     type="button"
                     onClick={() => handleDetails(project)}
-                    className="w-full mb-5 py-2.5 px-4 bg-[#1a2436] hover:bg-[#223048] border border-blue-500/30 text-blue-400 font-medium text-sm rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full mb-5 py-2.5 px-4 bg-white/5 hover:bg-white/10 border border-blue-500/30 text-blue-400 font-medium text-sm rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Details
                     <HiMiniEllipsisVertical
@@ -202,7 +223,7 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-3 px-3 bg-[#1e293b] hover:bg-[#334155] text-white text-xs font-semibold rounded-xl border border-slate-700/60 transition-all duration-200 flex items-center justify-center gap-2"
+                    className="py-3 px-3 bg-white/5 hover:bg-white/10 text-white text-xs font-semibold rounded-xl border border-white/10 transition-all duration-200 flex items-center justify-center gap-2"
                   >
                     <VscGithub size={16} />
                     GitHub

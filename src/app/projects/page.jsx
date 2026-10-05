@@ -64,6 +64,9 @@ export default function AllProjectsPage() {
     () => {
       if (loading || error || projectList.length === 0) return;
 
+      // Ensure ScrollTrigger updates after dynamic items render
+      ScrollTrigger.refresh();
+
       // Section header reveal
       gsap.from(".projects-header > *", {
         y: 30,
@@ -80,14 +83,14 @@ export default function AllProjectsPage() {
 
       // Project cards reveal
       gsap.from(".project-card", {
-        y: 50,
+        y: 40,
         opacity: 0,
-        duration: 1,
-        stagger: 0.2,
+        duration: 0.8,
+        stagger: 0.15,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".projects-grid",
-          start: "top 80%",
+          start: "top 85%",
           once: true,
         },
       });
@@ -102,7 +105,7 @@ export default function AllProjectsPage() {
     <section
       ref={containerRef}
       id="projects"
-      className="py-24 px-6 lg:px-20 bg-[#0c121e] text-white relative overflow-hidden font-sans min-h-screen"
+      className="py-24 px-6 lg:px-20 bg-deep-bg text-white relative overflow-hidden font-sans min-h-screen"
     >
       {/* Background Subtle Mesh Grid & Radial Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
@@ -136,7 +139,7 @@ export default function AllProjectsPage() {
             {[1, 2, 3, 4, 5, 6].map((item) => (
               <div
                 key={item}
-                className="rounded-2xl border border-blue-500/20 bg-[#111927] p-5 animate-pulse"
+                className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-lg p-5 animate-pulse"
               >
                 <div className="aspect-[16/10] rounded-xl bg-slate-800/60 mb-5" />
                 <div className="h-6 bg-slate-800/60 rounded w-2/3 mx-auto mb-4" />
@@ -163,12 +166,12 @@ export default function AllProjectsPage() {
             {projectList.map((project) => (
               <div
                 key={project.id || project._id}
-                className="project-card group bg-[#111927] border border-blue-500/20 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)]"
+                className="project-card group bg-white/[0.03] backdrop-blur-lg border border-white/10 hover:border-blue-500/50 rounded-2xl p-4 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)]"
               >
                 {/* Top Content Showcase */}
                 <div>
                   {/* Top Image Showcase with Blur & Reveal Effect */}
-                  <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-slate-700/50 bg-[#090d16]">
+                  <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 bg-black/40">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -197,7 +200,7 @@ export default function AllProjectsPage() {
                   <button
                     type="button"
                     onClick={() => handleDetails(project)}
-                    className="w-full mb-5 py-2.5 px-4 bg-[#1a2436] hover:bg-[#223048] border border-blue-500/30 text-blue-400 font-medium text-sm rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full mb-5 py-2.5 px-4 bg-white/5 hover:bg-white/10 border border-white/10 text-blue-400 font-medium text-sm rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Details
                     <HiMiniEllipsisVertical
@@ -213,7 +216,7 @@ export default function AllProjectsPage() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-3 px-3 bg-[#1e293b] hover:bg-[#334155] text-white text-xs font-semibold rounded-xl border border-slate-700/60 transition-all duration-200 flex items-center justify-center gap-2"
+                    className="py-3 px-3 bg-white/5 hover:bg-white/10 text-white text-xs font-semibold rounded-xl border border-white/10 transition-all duration-200 flex items-center justify-center gap-2"
                   >
                     <VscGithub size={16} />
                     GitHub
